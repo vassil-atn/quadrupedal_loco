@@ -1,1 +1,4 @@
+This is a general framework for legged robots- ros_gazebo simulation (taking the unitree gol for example)
 
+Put all the files in  under you catkin workspace "src/" location, Then "catkin_make" will work
+To make 
