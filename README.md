@@ -35,7 +35,7 @@ Already tested on Ros Moledic
                                 
 ////////////////////////////////////////////////////////////////////
 
-# **Steps**
+# **Build and Run**
 
 (1) 'caktin_make'
 
