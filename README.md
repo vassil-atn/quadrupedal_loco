@@ -9,6 +9,7 @@ This is a general framework for legged robots - ros_gazebo simulation (taking th
 
 
 Putting "unitree_ros" under your catkin workspace "src/" dir, then "catkin_make" will work ....
+
 Already tested on Ros Moledic
 
 
