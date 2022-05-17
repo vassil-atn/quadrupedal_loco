@@ -15,6 +15,8 @@ find_package(catkin REQUIRED COMPONENTS
     tf
     geometry_msgs
     unitree_legged_msgs
+    rospy
+    message_generation
 )
 
 find_package(gazebo REQUIRED)
@@ -23,6 +25,16 @@ FIND_PACKAGE(Eigen3 REQUIRED)
 INCLUDE_DIRECTORIES(${EIGEN3_INCLUDE_DIR})
 MESSAGE(STATUS "EIGEN3_INCLUDE_DIR: ${EIGEN3_INCLUDE_DIR}")
 
+
+add_service_files(
+  FILES
+  IKsolver.srv
+)
+
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+)
 
 catkin_package(
     CATKIN_DEPENDS 
@@ -41,6 +53,13 @@ include_directories(
     ${SRC_PATH}
 )
 
+catkin_install_python(PROGRAMS src/kinematics/IK_optimisation_solver.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+
+
+
 link_directories(${GAZEBO_LIBRARY_DIRS})
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GAZEBO_CXX_FLAGS}")
 
@@ -50,6 +69,7 @@ add_library(${PROJECT_NAME}
 )
 
 add_dependencies(${PROJECT_NAME} unitree_legged_msgs_gencpp)
+
 
 target_link_libraries(${PROJECT_NAME}
   ${catkin_LIBRARIES} ${EXTRA_LIBS}

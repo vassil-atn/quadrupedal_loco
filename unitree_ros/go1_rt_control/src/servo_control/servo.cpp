@@ -879,15 +879,19 @@ int main(int argc, char **argv)
             Eigen::Matrix<double,3,1>  q_ini;
             q_ini = FR_angle_des;
             FR_angle_des = Kine.Inverse_kinematics_g(body_p_des,body_r_des,FR_foot_des,q_ini,0);
+            // FR_angle_des = Kine.Inverse_kinematics_optimisation(FR_foot_des,q_ini,0);
 
             q_ini = FL_angle_des;
             FL_angle_des = Kine.Inverse_kinematics_g(body_p_des,body_r_des,FL_foot_des,q_ini,1);
+            // FL_angle_des = Kine.Inverse_kinematics_optimisation(FL_foot_des,q_ini,1);
 
             q_ini = RR_angle_des;
             RR_angle_des = Kine.Inverse_kinematics_g(body_p_des,body_r_des,RR_foot_des,q_ini,2);
+            // RR_angle_des = Kine.Inverse_kinematics_optimisation(RR_foot_des,q_ini,2);
 
             q_ini = RL_angle_des;
-            RL_angle_des = Kine.Inverse_kinematics_g(body_p_des,body_r_des,RL_foot_des,q_ini,3);           
+            RL_angle_des = Kine.Inverse_kinematics_g(body_p_des,body_r_des,RL_foot_des,q_ini,3);    
+            // RL_angle_des = Kine.Inverse_kinematics_optimisation(RL_foot_des,q_ini,3);       
 
             
              // desired angle: generatee by inverse kinematics

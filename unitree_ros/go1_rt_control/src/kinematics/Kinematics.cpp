@@ -20,7 +20,7 @@ Edited by Jiatao Ding, email: jtdingx@gmail.com
 #include <nav_msgs/Odometry.h>
 #include "body.h"
 #include "Kinematics.h"
-
+#include "go1_rt_control/IKsolver.h"
 
 using namespace std;
 using namespace Eigen;
@@ -265,6 +265,41 @@ Eigen::Matrix<double, 3,1> Kinematicclass::Inverse_kinematics(Eigen::Matrix<doub
 
 
 }
+
+
+
+// // local-frame, optimisation-based IK
+// Eigen::Matrix<double, 3,1> Kinematicclass::Inverse_kinematics_optimisation(Eigen::Matrix<double, 3,1> pos_des, Eigen::Matrix<double, 3,1> q_ini,int feet_flag)
+// {
+//     ROS_INFO_STREAM("Running IKsolver 1");
+//     ros::NodeHandle n;
+//     ros::ServiceClient client = n.serviceClient<go1_rt_control::IKsolver>("IKSolver");
+//     go1_rt_control::IKsolver srv;
+//     ROS_INFO_STREAM("Running IKsolver 2");
+//     srv.request.desired_pos = {{pos_des(0,0),pos_des(1,0),pos_des(2,0)}};
+//     srv.request.joint_angles = {{q_ini(0,0),q_ini(1,0),q_ini(2,0)}};
+//     srv.request.feet_flag = feet_flag;
+//     ROS_INFO_STREAM("Running IKsolver 3");
+//     if (client.call(srv)){
+//        Eigen::Matrix<double, 3,1> q_des;
+//        ROS_INFO_STREAM("Running IKsolver");
+//        q_des(0,0) = srv.response.desired_joint_angles[0]; 
+//        q_des(1,0) = srv.response.desired_joint_angles[1]; 
+//        q_des(2,0) = srv.response.desired_joint_angles[2]; 
+//      }
+//      else
+//      {
+//         ROS_INFO_STREAM("Failed to call service IKsolver"); 
+//         ROS_ERROR("Failed to call service IKsolver");
+       
+//      }
+    
+    
+//     return q_des;
+
+// }
+
+
 
 /// global
 Eigen::Matrix<double, 3,1> Kinematicclass::Inverse_kinematics_g(Eigen::Matrix<double, 3,1> body_P, Eigen::Matrix<double, 3,1> body_R, Eigen::Matrix<double, 3,1> pos_des, Eigen::Matrix<double, 3,1> q_ini,int feet_flag)

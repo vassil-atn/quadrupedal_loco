@@ -49,6 +49,9 @@ class Kinematicclass{
         Eigen::Matrix<double, 3,1> Forward_kinematics(Eigen::Matrix<double, 3,1> q_joint, int feet_flag);
         Eigen::Matrix<double, 3,1> Inverse_kinematics(Eigen::Matrix<double, 3,1> pos_des, Eigen::Matrix<double, 3,1> q_ini,int feet_flag); 
 
+        // local kinematics using optimisation:
+        // Eigen::Matrix<double, 3,1> Inverse_kinematics_optimisation(Eigen::Matrix<double, 3,1> pos_des, Eigen::Matrix<double, 3,1> q_ini,int feet_flag);
+
         // global kinematics:
         Eigen::Matrix<double, 3,1> Forward_kinematics_g(Eigen::Matrix<double, 3,1> body_P, Eigen::Matrix<double, 3,1> body_R, Eigen::Matrix<double, 3,1> q_joint, int feet_flag);
         Eigen::Matrix<double, 3,1> Inverse_kinematics_g(Eigen::Matrix<double, 3,1> body_P, Eigen::Matrix<double, 3,1> body_R, Eigen::Matrix<double, 3,1> pos_des, Eigen::Matrix<double, 3,1> q_ini,int feet_flag);
